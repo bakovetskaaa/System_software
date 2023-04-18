@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.block {
+  margin: 0 auto;
+}
+
+.card {
+  width: 165px;
+  height: 165px;
+  height: 40%;
+  background-color: transparent;
+  border: none !important;
+  border-radius: 5px;
+  &-title {
+    text-align: center;
+    font-size: 18px;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.211) !important;
+  }
+}
+
+.mat-mdc-card {
+  --mdc-elevated-card-container-color: transparent;
+  box-shadow: none;
+}

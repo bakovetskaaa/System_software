@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side">
+    <div class="sidenav">
+      <nav class="sidenav-nav">
+        <mat-selection-list class="sidenav-list" [multiple]="false">
+          <mat-list-option (click)="onHomeClick()">
+            <mat-icon matListItemIcon>home</mat-icon>
+            <div matListItemTitle>Main</div>
+          </mat-list-option>
+
+          <mat-list-option>
+            <mat-icon matListItemIcon>star</mat-icon>
+            <div matListItemTitle>Starred</div>
+          </mat-list-option>
+
+          <mat-list-option (click)="onClick('Projects')">
+            <mat-icon matListItemIcon> schedule </mat-icon>
+            <div matListItemTitle>Recent</div>
+          </mat-list-option>
+
+          <mat-divider></mat-divider>
+
+          <mat-list-option
+            *ngFor="let folder of folders"
+            (click)="onClick(folder)"
+          >
+            <mat-icon matListItemIcon>folder</mat-icon>
+            <div matListItemTitle>{{ folder }}</div>
+          </mat-list-option>
+        </mat-selection-list>
+      </nav>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

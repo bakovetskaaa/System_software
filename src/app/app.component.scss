@@ -1,0 +1,14 @@
+:host {
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.title-bar {
+  -webkit-app-region: drag;
+}
+
+button {
+  -webkit-app-region: no-drag;
+}

@@ -1,0 +1,64 @@
+<mat-toolbar class="title-bar" color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="onMenuClick()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>ng commander</span>
+
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <mat-checkbox
+      [(ngModel)]="showHidden"
+      (click)="$event.stopPropagation()"
+      (click)="onSettingsClick()"
+    >
+      Show hidden files
+    </mat-checkbox>
+  </mat-menu>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="onMinimaze()"
+  >
+    <mat-icon>minimize</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    color="accent"
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="onMaximaze()"
+  >
+    <mat-icon>web_asset</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    color="warn"
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="onClose()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<app-sidenav>
+  <router-outlet></router-outlet>
+</app-sidenav>

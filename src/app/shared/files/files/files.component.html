@@ -1,0 +1,14 @@
+<div class="block">
+  <div class="wrapper">
+    <div
+      class="card"
+      *ngFor="let entry of entries; let i = index; trackBy: trackItem"
+      (dblclick)="onDirClick(entry)"
+    >
+      <mat-card>
+        <img src="assets/img/folder.svg" alt="" class="card-img" />
+        <span class="card-title">{{ entries[i] }}</span>
+      </mat-card>
+    </div>
+  </div>
+</div>
