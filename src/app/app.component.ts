@@ -12,6 +12,7 @@ import {
 import { MatList } from '@angular/material/list';
 import { FilesService } from './shared/services/files.service';
 import { ipcRenderer } from 'electron';
+import { PersistenceService } from './shared/services/persistence.service';
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,14 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.initValues();
     this.initListeners();
+
+    if (PersistenceService.get('fauvorite')) {
+      this.foldersService.favorited = PersistenceService.get('fauvorite');
+    }
+
+    if (PersistenceService.get('recent')) {
+      this.foldersService.recent = PersistenceService.get('recent');
+    }
   }
 
   initListeners() {

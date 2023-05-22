@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Create {{type}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select [(value)]="type">
+      <mat-option value="Folder">Folder</mat-option>
+      <mat-option value="File">File</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button
+    mat-flat-button
+    color="accent"
+    (click)="onCreateClick()"
+    cdkFocusInitial
+  >
+
+    Create
+  </button>
+</div>

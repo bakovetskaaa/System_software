@@ -9,20 +9,16 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
-  {
-    path: '**',
-    component: PageNotFoundComponent
-  }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {}),
     HomeRoutingModule,
-    DetailRoutingModule
+    DetailRoutingModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

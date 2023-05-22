@@ -8,12 +8,12 @@
             <div matListItemTitle>Main</div>
           </mat-list-option>
 
-          <mat-list-option>
+          <mat-list-option (click)="onStarredClick()">
             <mat-icon matListItemIcon>star</mat-icon>
             <div matListItemTitle>Starred</div>
           </mat-list-option>
 
-          <mat-list-option (click)="onClick('Projects')">
+          <mat-list-option (click)="onRecentClick()">
             <mat-icon matListItemIcon> schedule </mat-icon>
             <div matListItemTitle>Recent</div>
           </mat-list-option>

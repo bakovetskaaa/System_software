@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Properties {{ name }}</h1>
+<h3 style="text-align: center">{{ path }}</h3>
+<h4 style="text-align: center" *ngIf="properties.isFile()">File</h4>
+<h4 style="text-align: center" *ngIf="properties.isBlockDevice()">
+  Block device
+</h4>
+<h4 style="text-align: center" *ngIf="properties.isDirectory()">Directory</h4>
+<h4 style="text-align: center" *ngIf="properties.isSocket()">Socket</h4>
+<h4 style="text-align: center" *ngIf="properties.isFIFO()">FIFO</h4>
+<h4 style="text-align: center" *ngIf="properties.isSymbolicLink()">
+  isSymbolicLink
+</h4>
+<h4
+  *ngIf="properties.size >= 1024000 && !properties.isDirectory()"
+  style="text-align: center"
+>
+  {{ properties.size / (1024 * 1000) | number : "1.0-2" }} Mb
+</h4>
+
+<h4
+  *ngIf="properties.size < 1024000 && !properties.isDirectory()"
+  style="text-align: center"
+>
+  {{ properties.size | number : "1.0-2" }} bytes
+</h4>
+
+<div mat-dialog-content>
+  <p>Created: {{ properties.birthtime | date : "long" }}</p>
+  <p>Last access: {{ properties.atime | date : "long" }}</p>
+  <p>Last modify: {{ properties.mtime | date : "long" }}</p>
+  <p>Last change: {{ properties.ctime | date : "long" }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="warn" (click)="onNoClick()">Close</button>
+</div>

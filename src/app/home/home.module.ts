@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RecentPreviewComponent } from './recent-preview/recent-preview.component';
 import { MatTableModule } from '@angular/material/table';
+import { StarredModule } from '../starred/starred.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatIconModule,
     MatTableModule,
+    StarredModule,
   ],
 })
 export class HomeModule {}

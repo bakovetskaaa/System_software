@@ -1,14 +1,34 @@
-<div class="block">
+<div class="block" (click)="matMenuTrigger.closeMenu()">
   <div class="wrapper">
     <div
       class="card"
       *ngFor="let entry of entries; let i = index; trackBy: trackItem"
       (dblclick)="onDirClick(entry)"
+      (click)="onSingleClick()"
+      (contextmenu)="onRightClick($event, entry)"
     >
       <mat-card>
-        <img src="assets/img/folder.svg" alt="" class="card-img" />
+        <img [src]="getType(entries[i])" alt="" class="card-img" />
         <span class="card-title">{{ entries[i] }}</span>
       </mat-card>
     </div>
   </div>
+
+  <div
+    style="visibility: hidden; position: fixed"
+    [style.left]="menuTopLeftPosition.x"
+    [style.top]="menuTopLeftPosition.y"
+    [matMenuTriggerFor]="rightMenu"
+  ></div>
+
+  <mat-menu #rightMenu="matMenu">
+    <ng-template matMenuContent let-item="item">
+      <button mat-menu-item (click)="onDelete(item)">Delete</button>
+      <button mat-menu-item (click)="onProperties(item)">Properties</button>
+      <button mat-menu-item (click)="onCopy(item)">Copy</button>
+      <button mat-menu-item (click)="onCut(item)">Cut</button>
+      <button mat-menu-item (click)="onPaste()">Paste</button>
+      <button mat-menu-item (click)="onFavorite(item)">Favorite</button>
+    </ng-template>
+  </mat-menu>
 </div>

@@ -26,6 +26,8 @@ import { AppComponent } from './app.component';
 import { SidenavModule } from './shared/sidenav/sidenav.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { RecentModule } from './recent/recent.module';
+import { StarredModule } from './starred/starred.module';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
@@ -50,6 +52,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
     MatListModule,
     MatCheckboxModule,
     SidenavModule,
+    RecentModule,
+    StarredModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

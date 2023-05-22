@@ -1,23 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RecentPreviewInterface } from '../types/recentPreview.interface';
+import { FilesService } from '../../shared/services/files.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recent-preview',
   templateUrl: './recent-preview.component.html',
   styleUrls: ['./recent-preview.component.scss'],
 })
-export class RecentPreviewComponent {
+export class RecentPreviewComponent implements OnInit {
   displayedColumns: string[] = ['name', 'modified', 'extension'];
-  dataSource = ELEMENT_DATA;
-}
+  dataSource: RecentPreviewInterface[] = [];
 
-export interface PeriodicElement {
-  name: string;
-  modified: Date;
-  extension: string;
-}
+  constructor(private filesService: FilesService, private router: Router) {}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Hydrogen', modified: new Date(), extension: 'txt' },
-  { name: 'Helium', modified: new Date(), extension: 'sh' },
-  { name: 'Lithium', modified: new Date(), extension: 'exe' },
-];
+  ngOnInit(): void {
+    this.dataSource = this.filesService.getRecentData();
+    console.log(this.dataSource);
+  }
+
+  onDirClick(folder: string): void {
+    if (this.filesService.getStat(folder).isDirectory()) {
+      this.filesService.currentPath = folder;
+      this.router.navigateByUrl('/detail');
+    } else {
+      this.filesService.openFile(folder);
+    }
+  }
+
+  getType(name) {
+    if (this.filesService.getStat(name).isDirectory()) {
+      return 'folder';
+    } else {
+      return 'text_snippet';
+    }
+  }
+}

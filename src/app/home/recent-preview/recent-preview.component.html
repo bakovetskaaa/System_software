@@ -1,23 +1,26 @@
 <div class="block">
   <h2 class="block-title">Recent</h2>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <td class="first" mat-cell *matCellDef="let element">
+      <td
+        class="first"
+        mat-cell
+        *matCellDef="let element"
+        (click)="onDirClick(element.name)"
+      >
         <div class="folder-name">
-          <mat-icon>folder</mat-icon>{{ element.name }}
+          <mat-icon>{{ getType(element.name) }} </mat-icon>
+          {{ element.name.split("/").at(-1) }}
         </div>
       </td>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="modified">
       <td mat-cell *matCellDef="let element">
         {{ element.modified | date : "dd MMM" }}
       </td>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="extension">
       <td mat-cell *matCellDef="let element">{{ element.extension }}</td>
     </ng-container>

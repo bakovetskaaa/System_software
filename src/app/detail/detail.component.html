@@ -1,3 +1,13 @@
 <div class="container">
   <app-files></app-files>
 </div>
+
+<button
+  class="new-folder"
+  mat-fab
+  color="primary"
+  aria-label="Create new folder or file"
+  (click)="openDialog()"
+>
+  <mat-icon>add</mat-icon>
+</button>

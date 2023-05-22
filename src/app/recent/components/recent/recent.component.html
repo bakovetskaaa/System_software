@@ -1,0 +1,14 @@
+<div class="block">
+  <div class="wrapper">
+    <div
+      class="card"
+      *ngFor="let entry of entries; let i = index"
+      (dblclick)="onDirClick(entry)"
+    >
+      <mat-card>
+        <img [src]="getType(entries[i])" alt="" class="card-img" />
+        <span class="card-title">{{ entries[i].split("/").at(-1) }}</span>
+      </mat-card>
+    </div>
+  </div>
+</div>

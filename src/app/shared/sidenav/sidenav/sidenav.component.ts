@@ -50,4 +50,12 @@ export class SidenavComponent implements OnInit {
   onHomeClick(): void {
     this.router.navigateByUrl('/home');
   }
+
+  onStarredClick(): void {
+    this.router.navigateByUrl('/starred');
+  }
+
+  onRecentClick(): void {
+    this.router.navigateByUrl('/recent');
+  }
 }
